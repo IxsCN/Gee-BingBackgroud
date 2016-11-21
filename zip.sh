@@ -1,3 +1,8 @@
 #!/bin/sh 
 # Copyright (C) 2016 evenS
-tar -czvf /tmp/data/bing/bing.tar.gz /etc/BingBackgroud/get_bing_cron.sh /etc/BingBackgroud/json.lua /www/turbo-static/turbo/v2/js/bing.js
+
+workdir="/tmp/data/bing"
+appname="bing"
+
+tar -czvf "$workdir"/"$appname".tar.gz -T "$workdir"/file.list
+tar -czvf "$workdir"/archive.tgz -C "$workdir"/  manifest.json script "$appname".tar.gz 

@@ -1,0 +1,4 @@
+/etc/BingBackgroud/get_bing_cron.sh
+/etc/BingBackgroud/json.lua
+/www/turbo-static/turbo/v2/js/bing.js
+/etc/init.d/bing

@@ -5,6 +5,7 @@ install(){
     tar xzvf bing.tar.gz -C / 
     /etc/BingBackgroud/get_bing_cron.sh install
     /etc/BingBackgroud/get_bing_cron.sh cron
+    /etc/init.d/bing enable
     ln -sf /tmp/bing.png /www/turbo-static/turbo/v2/img/bing.png
     sed -i '\#<link rel="stylesheet" type="text/css" href="<%=resource%>/v2/style/overbackgroud.css">#d' /usr/lib/lua/luci/view/admin_web/footer.htm
     sed -i '\#<link rel="stylesheet" type="text/css" href="<%=resource%>/v2/style/overbackgroud.css">#d' /usr/lib/lua/luci/view/admin_web/header.htm #兼容新版本黑色主题
@@ -13,6 +14,8 @@ install(){
 
 uninstall(){
     /etc/BingBackgroud/get_bing_cron.sh uninstall
+    /etc/init.d/bing disable
+    rm -rf /etc/init.d/bing
     rm -rf /tmp/bing.png
     rm -rf /etc/BingBackgroud/
     rm -rf /www/turbo-static/turbo/v2/img/bing.png
