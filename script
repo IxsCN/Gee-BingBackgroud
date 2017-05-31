@@ -10,6 +10,7 @@ install(){
     sed -i '\#<link rel="stylesheet" type="text/css" href="<%=resource%>/v2/style/overbackgroud.css">#d' /usr/lib/lua/luci/view/admin_web/footer.htm
     sed -i '\#<link rel="stylesheet" type="text/css" href="<%=resource%>/v2/style/overbackgroud.css">#d' /usr/lib/lua/luci/view/admin_web/header.htm #兼容新版本黑色主题
     /etc/init.d/build_loginpage start
+
 }
 
 uninstall(){
@@ -21,7 +22,9 @@ uninstall(){
     rm -rf /www/turbo-static/turbo/v2/img/bing.png
     rm -rf /www/turbo-static/turbo/v2/js/bing.js
     if [ -f "/etc/market/GeeBlack.script" -a -f "/www/turbo-static/turbo/v2/style/overbackgroud.css" ]; then
-        echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"<%=resource%>/v2/style/overbackgroud.css\">" >> /usr/lib/lua/luci/view/admin_web/header.htm
+        echo -en "\n<link rel=\"stylesheet\" type=\"text/css\" href=\"<%=resource%>/v2/style/overbackgroud.css\">" >> /usr/lib/lua/luci/view/admin_web/header.htm
     fi
     /etc/init.d/build_loginpage start
+    \cp -r /rom/www/turbo-static/turbo/v2/js/admin_web/login.js /www/turbo-static/turbo/v2/js/admin_web/login.js
+    \cp -r /rom/usr/lib/lua/luci/view/admin_web/header.htm /usr/lib/lua/luci/view/admin_web/header.htm 
 }
